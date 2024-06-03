@@ -1,0 +1,119 @@
+version: '3.8'
+
+services:
+  sqldatabase:
+    image: mysql
+    container_name: sqldatabase
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - asidg1
+  discovery-service:
+    image: discoveryimage
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    networks:
+      - asidg1
+  student-service:
+    image: studentimage
+    container_name: student-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: StudentService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8084:8084"
+    networks:
+      - asidg1
+  club-service:
+    image: clubimage
+    container_name: club-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: ClubService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8082:8082"
+    networks:
+      - asidg1
+  employee-service:
+    image: employeeimage
+    container_name: employee-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: EmployeeService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8083:8083"
+    networks:
+      - asidg1
+  parent-service:
+    image: parentimage
+    container_name: parent-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: ParentService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8081:8081"
+    networks:
+      - asidg1
+  saga-service:
+    image: sagaimage
+    container_name: saga-service
+    ports:
+      - "9090:9090"
+    networks:
+      - asidg1
+  teacher-service:
+    image: teacherimage
+    container_name: teacher-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: TeacherService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8085:8085"
+    networks:
+      - asidg1
+  town-service:
+    image: townimage
+    container_name: town-service
+    environment:
+      MYSQL_HOST: sqldatabase
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: TownService_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8089:8089"
+    networks:
+      - asidg1
+  gateway-service:
+    image: gatewayimage
+    container_name: gateway-service
+    ports:
+      - "8080:8080"
+    networks:
+      - asidg1
+
+volumes:
+  mysql-data:
+
+networks:
+  asidg1:
