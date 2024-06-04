@@ -14,7 +14,7 @@ services:
       - asidg1
 
   discovery-service:
-    image: discoveryimage
+    image: leonor372002/discoveryimage
     container_name: discovery-service
     ports:
       - "8761:8761"
@@ -22,7 +22,7 @@ services:
       - asidg1
 
   student-service:
-    image: studentimage
+    image: leonor372002/studentimage
     container_name: student-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -36,7 +36,7 @@ services:
       - asidg1
 
   club-service:
-    image: clubimage
+    image: leonor372002/clubimage
     container_name: club-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -52,7 +52,7 @@ services:
       - asidg1
 
   employee-service:
-    image: employeeimage
+    image: leonor372002/employeeimage
     container_name: employee-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -66,7 +66,7 @@ services:
       - asidg1
 
   parent-service:
-    image: parentimage
+    image: leonor372002/parentimage
     container_name: parent-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -80,7 +80,7 @@ services:
       - asidg1
 
   saga-service:
-    image: sagaimage
+    image: leonor372002/sagaimage
     container_name: saga-service
     ports:
       - "9090:9090"
@@ -88,7 +88,7 @@ services:
       - asidg1
 
   teacher-service:
-    image: teacherimage
+    image: leonor372002/teacherimage
     container_name: teacher-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -102,7 +102,7 @@ services:
       - asidg1
 
   town-service:
-    image: townimage
+    image: leonor372002/townimage
     container_name: town-service
     environment:
       MYSQL_HOST: sqldatabase
@@ -116,7 +116,7 @@ services:
       - asidg1
 
   gateway-service:
-    image: gatewayimage
+    image: leonor372002/gatewayimage
     container_name: gateway-service
     ports:
       - "8080:8080"
